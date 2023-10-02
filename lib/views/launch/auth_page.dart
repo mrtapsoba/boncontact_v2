@@ -1,3 +1,4 @@
+import 'package:boncontact_v2/views/launch/identity_page.dart';
 import 'package:flutter/material.dart';
 
 class AuthPhonePage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _AuthPhonePageState extends State<AuthPhonePage> {
           title: const Text("Authentification"),
         ),
         body: Container(
-            margin: const EdgeInsets.all(50),
+            margin: const EdgeInsets.symmetric(horizontal: 50),
             child: Column(children: [
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 50),
@@ -54,7 +55,12 @@ class _AuthPhonePageState extends State<AuthPhonePage> {
                                   onPressed: () {},
                                 ),
                                 ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const IdentityPage();
+                                      }));
+                                    },
                                     child: const Text("Valider"))
                               ],
                             ));
@@ -68,7 +74,7 @@ class _AuthPhonePageState extends State<AuthPhonePage> {
                   )),
               const Expanded(
                   child: Center(
-                child: Text('@intellectus_bf'),
+                child: Text('Bon Contact'),
               ))
             ])));
   }

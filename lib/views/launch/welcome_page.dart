@@ -18,7 +18,7 @@ class _WelcomePageState extends State<WelcomePage> {
               const Center(
                   child: Text("Bienvenue sur\nle Bon Contact",
                       style: TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold))),
+                          fontSize: 20))),
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 50),
                 height: 400,

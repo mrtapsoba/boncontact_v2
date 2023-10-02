@@ -1,30 +1,55 @@
-import 'package:boncontact_v2/views/chat/chat_all_page.dart';
 import 'package:boncontact_v2/views/contact/network_public_page.dart';
 import 'package:boncontact_v2/views/contact/on_phone_page.dart';
-import 'package:boncontact_v2/views/contact/one_contact_detail_page.dart';
 import 'package:flutter/material.dart';
 
-class ContactSavePage extends StatefulWidget {
-  const ContactSavePage({super.key});
+class ScanUserPage extends StatefulWidget {
+  const ScanUserPage({super.key});
 
   @override
-  State<ContactSavePage> createState() => _ContactSavePageState();
+  State<ScanUserPage> createState() => _ScanUserPageState();
 }
 
-class _ContactSavePageState extends State<ContactSavePage> {
+class _ScanUserPageState extends State<ScanUserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Scanner un utilisateur"),
+      ),
       body: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          margin: const EdgeInsets.all(10),
           child: Column(children: [
-            TextFormField(
-              decoration: const InputDecoration(
-                suffixIcon: Icon(Icons.search),
-                hintText: "Recherche de contact ...",
-                border: OutlineInputBorder(),
-              ),
+            const Text("Veuillez scanner le code QR de l'utilisateur"),
+            Expanded(
+                child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              width: MediaQuery.sizeOf(context).width - 100,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10), color: Colors.blue),
+            )),
+            const Text("ou utiliser le numero de compte"),
+            const SizedBox(
+              height: 10,
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                    width: MediaQuery.of(context).size.width - 100,
+                    child: TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: "Ecrire le numero de l'utilisateur",
+                        border: OutlineInputBorder(),
+                      ),
+                    )),
+                FloatingActionButton(
+                    onPressed: () {}, child: const Icon(Icons.search))
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text("ou rechercher ..."),
             const SizedBox(
               height: 10,
             ),
@@ -65,35 +90,7 @@ class _ContactSavePageState extends State<ContactSavePage> {
                     )),
               ],
             ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-                child: ListView.builder(
-                    itemCount: 25,
-                    itemBuilder: (context, index) {
-                      return Card(
-                          child: ListTile(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return const OneContactDetailPage();
-                          }));
-                        },
-                        leading: const CircleAvatar(),
-                        title: const Text("User name"),
-                      ));
-                    }))
           ])),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return const ChatAllPage();
-          }));
-        },
-        label: const Text("Mes discussions"),
-        icon: const Icon(Icons.chat),
-      ),
     );
   }
 }

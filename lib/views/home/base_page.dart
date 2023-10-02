@@ -1,6 +1,9 @@
 import 'package:boncontact_v2/views/contact/contact_save_page.dart';
 import 'package:boncontact_v2/views/feed/feed_page.dart';
 import 'package:boncontact_v2/views/home/notifications_page.dart';
+import 'package:boncontact_v2/views/home/parametre_page.dart';
+import 'package:boncontact_v2/views/home/scan_user_page.dart';
+import 'package:boncontact_v2/views/home/services_plus_page.dart';
 import 'package:boncontact_v2/views/users/active_user_page.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +20,60 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            const UserAccountsDrawerHeader(
+                accountName: Text("Bon Contact"),
+                accountEmail: Text("ktapsoba@gmail.com")),
+            const SizedBox(
+              height: 10,
+            ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const ServicesPlusPage();
+                  }));
+                },
+                title: const Text("Services plus"),
+                subtitle: const Text("Des services tiers en webview"),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Card(
+              child: ListTile(
+                title: Text("Contactez nous"),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Card(
+              child: ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const ParametrePage();
+                  }));
+                },
+                title: const Text("Paramètres"),
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Bon Contact"),
         actions: [
           ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const ScanUserPage();
+                }));
+              },
               icon: const Icon(Icons.qr_code_2),
               label: const Text("Scanner")),
           IconButton.filledTonal(

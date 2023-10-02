@@ -17,20 +17,33 @@ class _PlateformesListPageState extends State<PlateformesListPage> {
         ),
         body: Container(
             margin: const EdgeInsets.symmetric(horizontal: 25),
-            child: ListView.builder(
-                itemCount: 17,
-                itemBuilder: (context, index) {
-                  return Card(
-                      child: ListTile(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const OneMediaDetailPage();
-                      }));
-                    },
-                    trailing: const CircleAvatar(),
-                    title: Text("Social media $index"),
-                  ));
-                })));
+            child: Column(children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  suffixIcon: Icon(Icons.search),
+                  hintText: "Recherche de plateformes ...",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+             Expanded(
+                child: ListView.builder(
+                  itemCount: 17,
+                  itemBuilder: (context, index) {
+                    return Card(
+                        child: ListTile(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const OneMediaDetailPage();
+                        }));
+                      },
+                      trailing: const CircleAvatar(),
+                      title: Text("Social media $index"),
+                    ));
+                  }))
+            ])));
   }
 }
